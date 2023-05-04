@@ -99,22 +99,4 @@ open .
 
 
 
-## 写在最后
-
-如果你觉得麻烦，我也给你提供了一份懒人配置。按需使用。
-
-```bash
-[Interface]
-PrivateKey = AOwZStw/z7kOrfdqvisaeltrb9sCf4MWsPH5D9/BBVI=
-Address = 172.16.0.2/32
-Address = 2606:4700:110:84fc:7d13:c45:f900:8f76/128
-DNS = 1.1.1.1
-MTU = 1280
-[Peer]
-PublicKey = bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
-AllowedIPs = 0.0.0.0/0
-AllowedIPs = ::/0
-Endpoint = engage.cloudflareclient.com:2408
-
-```
 

@@ -1,1 +1,1 @@
-自用 Surge/Loon/Clash 配置
+自用 Surge/Loon/QuantumultX/Clash 配置

@@ -1,0 +1,209 @@
+ {
+  "dns": {
+    "rules": [
+      {
+        "clash_mode": "global",
+        "server": "remote"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "local"
+      },
+      {
+        "outbound": [
+          "any"
+        ],
+        "server": "local"
+      },
+      {
+        "geosite": "cn",
+        "server": "local"
+      }
+    ],
+    "servers": [
+      {
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "select",
+        "tag": "remote"
+      },
+      {
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct",
+        "tag": "local"
+      }
+    ],
+    "strategy": "ipv4_only"
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "secret": "",
+      "store_selected": true
+    }
+  },
+  "inbounds": [
+    {
+      "auto_route": true,
+      "domain_strategy": "ipv4_only",
+      "endpoint_independent_nat": true,
+      "inet4_address": "172.19.0.1/30",
+      "mtu": 9000,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "strict_route": true,
+      "type": "tun"
+    },
+    {
+      "domain_strategy": "ipv4_only",
+      "listen": "127.0.0.1",
+      "listen_port": 2333,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "tag": "socks-in",
+      "type": "socks",
+      "users": []
+    },
+    {
+      "domain_strategy": "ipv4_only",
+      "listen": "127.0.0.1",
+      "listen_port": 2334,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "tag": "mixed-in",
+      "type": "mixed",
+      "users": []
+    }
+  ],
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "outbounds": [
+    {
+      "tag": "select",
+      "type": "selector",
+      "default": "urltest",
+      "outbounds": [
+        "urltest",
+        "sing-box-hysteria2-KR",
+        "sing-box-hysteria2-HK",
+        "sing-box-hysteria2-AU"
+      ]
+    },
+    {
+      "type": "hysteria2",
+      "server": "ip地址", //你的vps ip地址
+      "server_port": 端口,   //hy2端口号
+      "tag": "sing-box-hysteria2-HK",
+      "up_mbps": 30,
+      "down_mbps": 150,  //拥塞控制，根据自己的带宽填也可以跟我一样
+      "password": "密码", //你的hysteria2密码
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com", //自签域名
+        "insecure": true, //自签就true，不自签false，跳过证书验证
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "type": "hysteria2",
+      "server": "ip地址", //你的vps ip地址
+      "server_port": 端口,   //hy2端口号
+      "tag": "sing-box-hysteria2-AU",
+      "up_mbps": 30,
+      "down_mbps": 150,  //拥塞控制，根据自己的带宽填也可以跟我一样
+      "password": "密码", //你的hysteria2密码
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com", //自签域名
+        "insecure": true, //自签就true，不自签false，跳过证书验证
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "type": "hysteria2",
+      "server": "ip地址", //你的vps ip地址
+      "server_port": 端口,   //hy2端口号
+      "tag": "sing-box-hysteria2-KR",
+      "up_mbps": 30,
+      "down_mbps": 150,  //拥塞控制，根据自己的带宽填也可以跟我一样
+      "password": "密码", //你的hysteria2密码
+      "tls": {
+        "enabled": true,
+        "server_name": "bing.com", //自签域名
+        "insecure": true, //自签就true，不自签false，跳过证书验证
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    },
+    {
+      "tag": "urltest",
+      "type": "urltest",
+      "outbounds": [
+        "sing-box-hysteria2-KR",
+        "sing-box-hysteria2-HK",
+        "sing-box-hysteria2-AU"
+      ]
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "rules": [
+      {
+        "geosite": "category-ads-all",
+        "outbound": "block"
+      },
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "select"
+      },
+      {
+        "geoip": [
+          "cn",
+          "private"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geosite": "geolocation-!cn",
+        "outbound": "select"
+      },
+      {
+        "geosite": "cn",
+        "outbound": "direct"
+      }
+    ],
+    "geoip": {
+            "download_detour": "select"   //因为有的小伙伴拉不到github中的文件，所以用代理select来下载分流用的geo文件，如果还不行，就看这个文档加上一个能访问的geo文件地址
+        },
+    "geosite": {
+            "download_detour": "select"
+        }
+  }
+}

@@ -2,13 +2,13 @@
 
 ## Clash
 
-SrugePro 引用链接 ：[https://sub.surgee.me/](https://sub.surgee.me/)
+Clash 引用链接 ：[https://sub.surgee.me/](https://sub.surgee.me/)
 
 ## Surge
 
 SrugePro 引用链接 ：https://raw.githubusercontent.com/zxfccmm4/Surge/main/SurgePro.conf
 
-SrugePro 引用链接 ：https://raw.githubusercontent.com/zxfccmm4/Surge/main/SurgeProMax.conf
+SrugeProMax 引用链接 ：https://raw.githubusercontent.com/zxfccmm4/Surge/main/SurgeProMax.conf
 
 ## Loon
 

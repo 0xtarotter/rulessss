@@ -8258,6 +8258,6 @@ rules:
   - DOMAIN-KEYWORD,speedtest,Speedtest
   - GEOIP,CN,全球直连
   - MATCH,漏网之鱼
-proxy-providers: {机场✈️: {interval: 0, url: '订阅链接'}}
+proxy-providers: {SF: {interval: 0, url: '订阅链接'}}
 dns: {}
 subscribe-url: 换成你的订阅链接

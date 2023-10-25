@@ -468,3 +468,6 @@ rules:
   - GEOIP,CN,国内网站
   - FINAL,漏网之鱼
   - MATCH,国外网站
+proxy-providers: {SF: {interval: 0, url: '订阅链接'}}
+dns: {}
+subscribe-url: 换成你的订阅链接

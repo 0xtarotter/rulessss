@@ -4,6 +4,45 @@ allow-lan: true
 mode: Rule
 log-level: info
 external-controller: :9090
+
+proxy-providers:
+  SF:
+    type: http
+    url: "https://sub.store/download/collection/AllServer"
+    interval: 86400
+    path: ./all.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://cp.cloudflare.com/generate_204
+
+dns:
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  default-nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
 proxies: []
 proxy-groups:
   - name: 节点选择
@@ -479,6 +518,3 @@ rules:
   - GEOIP,CN,国内网站
   - FINAL,漏网之鱼
   - MATCH,国外网站
-proxy-providers: {SF: {interval: 86400, url: '订阅链接'}}
-dns: {}
-subscribe-url: 换成你的订阅链接

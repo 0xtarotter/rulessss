@@ -3,6 +3,23 @@ socks-port: 7891
 mode: Rule
 log-level: info
 external-controller: :9090
+dns:
+  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
+  # 仅填写 DNS 服务器的 IP 地址
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  # 支持 UDP / TCP / DoT / DoH / DoQ 协议的 DNS 服务，可以指明具体的连接端口号。
+  # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
+  # Stash 会使用最先获得的解析记录回复 DNS 请求
+  nameserver:
+    # 不建议配置超过 2 个 DNS 服务器，会增加系统功耗
+#   - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+#   - quic://dns.adguard.com:853
+    - doq://test.dns.nextdns.io:853
+    - system # 使用 iOS 系统 DNS 
+  # 跳过证书验证，解决部分兼容性问题 https://help.nextdns.io/t/g9hdkjz
 proxies: []
 proxy-groups:
   - name: 节点选择
@@ -494,24 +511,7 @@ rules:
   - GEOIP,CN,国内网站
   - FINAL,漏网之鱼
   - MATCH,国外网站
-
-dns:
-  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
-  # 仅填写 DNS 服务器的 IP 地址
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  # 支持 UDP / TCP / DoT / DoH / DoQ 协议的 DNS 服务，可以指明具体的连接端口号。
-  # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
-  # Stash 会使用最先获得的解析记录回复 DNS 请求
-  nameserver:
-    # 不建议配置超过 2 个 DNS 服务器，会增加系统功耗
-#   - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-#   - quic://dns.adguard.com:853
-    - doq://test.dns.nextdns.io:853
-    - system # 使用 iOS 系统 DNS 
-  # 跳过证书验证，解决部分兼容性问题 https://help.nextdns.io/t/g9hdkjz
+  
   proxy-providers: {Steve: {interval: 0, url: '订阅链接'}}
   skip-cert-verify: true
 subscribe-url: 换成你的订阅链接

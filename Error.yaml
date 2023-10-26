@@ -523,6 +523,6 @@ rules:
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,NetEaseMusic,网易音乐
   - RULE-SET,Twitter,Twitter
-  - GEOIP,CN,全球直连
+  - GEOIP,CN,DIRECT
   - FINAL,漏网之鱼
   - MATCH,国外网站

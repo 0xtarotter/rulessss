@@ -17,7 +17,7 @@ proxy-providers:
     type: http
     url: "改成你的订阅"
     interval: 86400
-    path: ./all.yaml
+    path: ./SF.yaml
     health-check:
       enable: true
       interval: 600

@@ -503,7 +503,7 @@ rule-providers:
 rules:
   # 分流规则引用
   - RULE-SET,Apple,苹果服务
-  - RULE-SET,ChinaMaxNoMediaM,全球直连
+  - RULE-SET,ChinaMaxNoMedia,全球直连
   - RULE-SET,ChinaMaxNoMedia_IP,全球直连  
   - RULE-SET,GoogleFCM,谷歌FCM
   - RULE-SET,Netflix,奈飞视频

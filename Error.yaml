@@ -1,25 +1,9 @@
 port: 7890
 socks-port: 7891
+allow-lan: true
 mode: Rule
 log-level: info
 external-controller: :9090
-dns:
-  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
-  # 仅填写 DNS 服务器的 IP 地址
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  # 支持 UDP / TCP / DoT / DoH / DoQ 协议的 DNS 服务，可以指明具体的连接端口号。
-  # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
-  # Stash 会使用最先获得的解析记录回复 DNS 请求
-  nameserver:
-    # 不建议配置超过 2 个 DNS 服务器，会增加系统功耗
-#   - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-#   - quic://dns.adguard.com:853
-    - doq://test.dns.nextdns.io:853
-    - system # 使用 iOS 系统 DNS 
-  # 跳过证书验证，解决部分兼容性问题 https://help.nextdns.io/t/g9hdkjz
 proxies: []
 proxy-groups:
   - name: 节点选择
@@ -35,22 +19,19 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/%24tash.png
-    
   - name: 手动切换
     type: select
     proxies: null
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Available.png
-    use: [Steve]
-    
+    use: [SF]
   - name: 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies: null
-    use: [Steve]
+    use: [SF]
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Auto_Speed.png
-    
   - name: 电报消息
     type: select
     proxies:
@@ -64,7 +45,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Telegram.png
-    
   - name: OpenAi
     type: select
     proxies:
@@ -78,7 +58,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/openai.png
-    
   - name: 油管视频
     type: select
     proxies:
@@ -92,7 +71,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Google_Suite/YouTube.png
-    
   - name: 奈飞视频
     type: select
     proxies:
@@ -106,7 +84,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Netflix.png
-    
   - name: 哔哩哔哩
     type: select
     proxies:
@@ -114,7 +91,6 @@ proxy-groups:
       - 台湾节点
       - 香港节点
     icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/bilibilitv.png
-    
   - name: 国外媒体
     type: select
     proxies:
@@ -128,7 +104,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Diaspora.png
-    
   - name: 国内媒体
     type: select
     proxies:
@@ -139,7 +114,6 @@ proxy-groups:
       - 日本节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/TencentVideo.png
-    
   - name: Instagram
     type: select
     proxies:
@@ -152,7 +126,6 @@ proxy-groups:
       - 美国节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Instagram.png
-    
   - name: Twitter
     type: select
     proxies:
@@ -165,7 +138,6 @@ proxy-groups:
       - 美国节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Twitter.png
-    
   - name: 谷歌FCM
     type: select
     proxies:
@@ -178,7 +150,6 @@ proxy-groups:
       - 日本节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Google_Suite/Google.png
-    
   - name: WeChat
     type: select
     proxies:
@@ -189,7 +160,6 @@ proxy-groups:
       - 日本节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/WeChat.png
-    
   - name: 网易音乐
     type: select
     proxies:
@@ -197,7 +167,6 @@ proxy-groups:
       - 节点选择
       - 自动选择
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/NetEase_Music.png
-    
   - name: 微软云盘
     type: select
     proxies:
@@ -205,9 +174,11 @@ proxy-groups:
       - 节点选择
       - 美国节点
       - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/ASN.png
-    
   - name: 微软服务
     type: select
     proxies:
@@ -215,9 +186,11 @@ proxy-groups:
       - 节点选择
       - 美国节点
       - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Microsoft.png
-    
   - name: 苹果服务
     type: select
     proxies:
@@ -225,9 +198,11 @@ proxy-groups:
       - 节点选择
       - 美国节点
       - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
       - 手动切换
     icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/apple.png
-    
   - name: 全球直连
     type: select
     proxies:
@@ -235,14 +210,12 @@ proxy-groups:
       - 节点选择
       - 自动选择
     icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/londoneye.png
-    
   - name: Speedtest
     type: select
     proxies:
       - DIRECT
       - 节点选择
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
-    
   - name: 漏网之鱼
     type: select
     proxies:
@@ -257,42 +230,36 @@ proxy-groups:
       - 英国节点
       - 手动切换
     icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/betahub.png
-    
   - name: 香港节点
     type: select
     proxies: null
     use: [SF]
     filter: 港|🇭🇰|香港|HK|Hong
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Hong_Kong.png
-    
   - name: 日本节点
     type: select
     proxies: null
     filter: 日|🇯🇵|日本|JP|Japan
     use: [SF]
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Japan.png
-    
   - name: 美国节点
     type: select
     proxies: null
     filter: 美|🇺🇸|美国|US|States|American
     use: [SF]
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_States.png
-    
   - name: 台湾节点
     type: select
     proxies: null
     filter: 台|🇨🇳|台湾|TW|Tai
     use: [SF]
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Taiwan.png
-    
   - name: 狮城节点
     type: select
     proxies: null
     filter: 坡|🇸🇬|新加坡|狮城|SG|Singapore
     use: [SF]
     icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Singapore.png
-    
   - name: 英国节点
     type: select
     proxies: null
@@ -302,6 +269,7 @@ proxy-groups:
 
 rule-providers:
   # 远程规则集
+
   China:
     type: http
     behavior: domain
@@ -312,7 +280,7 @@ rule-providers:
   ChinaIPs_IP:
     type: http
     behavior: domain
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt
     path: ./ruleset/ChinaIPs_IP.yaml
     interval: 86400
     format: text
@@ -320,14 +288,14 @@ rule-providers:
   Apple:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
     path: ./ruleset/Apple.yaml
     interval: 86400
 
   Google:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
     path: ./ruleset/Google.yaml
     interval: 86400
 
@@ -356,7 +324,7 @@ rule-providers:
   Microsoft:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
     interval: 86400
 
@@ -370,42 +338,42 @@ rule-providers:
   WeChat:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/WeChat/WeChat.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.yaml
     path: ./ruleset/WeChat.yaml
     interval: 86400
 
   BiliBili:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
     path: ./ruleset/BiliBili.yaml
     interval: 86400
 
   Telegram:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
     path: ./ruleset/Telegram.yaml
     interval: 86400
 
   OpenAI:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
     path: ./ruleset/OpenAI.yaml
     interval: 86400
     
   Twitter: 
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml
+    url: https://raw.githubusercontents.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml
     path: ./ruleset/Twitter.yaml
     interval: 86400
 
   YouTube:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml
+    behavior: classical
+    url: https://raw.githubusercontents.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
     path: ./ruleset/YouTube.yaml
     interval: 86400
 
@@ -419,14 +387,14 @@ rule-providers:
   GlobalMedia: # 国际媒体
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
     path: ./ruleset/Streaming.yaml
     interval: 86400
     
   Streaming: # 国际媒体
     type: http
     behavior: domain
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Domain_For_Clash.txt
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain_For_Clash.txt
     path: ./ruleset/Streaming.yaml
     interval: 86400
     
@@ -477,7 +445,7 @@ rule-providers:
   Lan: # 局域网
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
     path: ./ruleset/lan.yaml
     interval: 86400
     
@@ -511,7 +479,6 @@ rules:
   - GEOIP,CN,国内网站
   - FINAL,漏网之鱼
   - MATCH,国外网站
-  
-  proxy-providers: {Steve: {interval: 86400, url: '订阅链接'}}
-  skip-cert-verify: true
+proxy-providers: {SF: {interval: 86400, url: '订阅链接'}}
+dns: {}
 subscribe-url: 换成你的订阅链接

@@ -1,8 +1,14 @@
-# 自用 Surge/Loon/QuantumultX/Clash 配置
+# 自用 Surge/Loon/QuantumultX/Clash/Stash/Choc/ClashConnect 配置
 
 ## Clash
 
 Clash 引用链接 ：[https://sub.surgee.me/](https://sub.surgee.me/)
+
+## Stash/Choc/ClashConnect
+
+Error 引用链接 ：[https://raw.githubusercontent.com/zxfccmm4/Surge/main/Error.yaml](https://raw.githubusercontent.com/zxfccmm4/Surge/main/Error.yaml)
+
+SteveStash 引用链接 ：[https://raw.githubusercontent.com/zxfccmm4/Surge/main/SteveStash.yaml](https://raw.githubusercontent.com/zxfccmm4/Surge/main/SteveStash.yaml)
 
 ## Surge
 
